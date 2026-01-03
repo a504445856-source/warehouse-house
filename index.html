@@ -1,393 +1,341 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>📦 مستودع البيت</title>
+
   <style>
-    :root{--b:#2563eb;--bg:#f6f7fb;--card:#fff;--br:#e5e7eb;--txt:#111827;}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial;background:var(--bg);color:var(--txt)}
-    header{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--br);padding:12px 14px;z-index:10}
-    header h1{margin:0;font-size:18px;display:flex;gap:8px;align-items:center}
-    main{padding:14px;max-width:980px;margin:auto}
-    .grid{display:grid;gap:10px}
-    @media(min-width:900px){.grid{grid-template-columns: 1.1fr .9fr}}
-    .card{background:var(--card);border:1px solid var(--br);border-radius:12px;padding:12px}
-    .row{display:grid;gap:8px;grid-template-columns:1fr}
-    @media(min-width:560px){.row.two{grid-template-columns:1fr 1fr}.row.three{grid-template-columns:1fr 1fr 1fr}}
-    input,select,textarea,button{width:100%;box-sizing:border-box;padding:11px;border-radius:10px;border:1px solid var(--br);font-size:15px;background:#fff}
-    textarea{min-height:90px;resize:vertical}
-    button{background:var(--b);color:#fff;border:0;font-weight:700;cursor:pointer}
-    button.secondary{background:#111827}
-    button.light{background:#e5e7eb;color:#111827}
-    .muted{color:#6b7280;font-size:13px}
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap}
-    .toolbar > *{flex:1}
-    .list{display:grid;gap:10px}
-    .item{display:grid;gap:10px;border:1px solid var(--br);border-radius:12px;padding:10px;background:#fff}
-    @media(min-width:560px){.item{grid-template-columns:110px 1fr}}
-    .thumb{width:110px;height:110px;border-radius:10px;border:1px solid var(--br);object-fit:cover;background:#f3f4f6}
-    .meta b{font-size:16px}
-    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-    .tag{font-size:12px;background:#f3f4f6;border:1px solid var(--br);padding:4px 8px;border-radius:999px}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .actions button{flex:1}
-    .split{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-    .pill{font-size:12px;background:#eef2ff;border:1px solid #c7d2fe;color:#1e3a8a;padding:4px 8px;border-radius:999px}
-    .warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:10px;border-radius:12px}
-    .ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:10px;border-radius:12px}
-    hr{border:0;border-top:1px solid var(--br);margin:10px 0}
+    :root{
+      --b:#2563eb;
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --bd:#e5e7eb;
+      --txt:#111827;
+      --r:14px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial;
+      background:var(--bg);
+      color:var(--txt);
+    }
+
+    header{
+      background:var(--card);
+      border-bottom:1px solid var(--bd);
+      padding:14px;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    header h1{
+      margin:0;
+      font-size:20px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    main{
+      padding:16px;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+
+    @media(min-width:900px){
+      .grid{
+        grid-template-columns:1fr 1.2fr;
+      }
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--bd);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      padding:14px;
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size:16px;
+    }
+
+    label{
+      font-size:13px;
+      color:#374151;
+      margin-bottom:4px;
+      display:block;
+    }
+
+    input, select, textarea, button{
+      width:100%;
+      padding:10px;
+      border-radius:10px;
+      border:1px solid var(--bd);
+      font-size:14px;
+      font-family:inherit;
+    }
+
+    textarea{resize:vertical}
+
+    .row{
+      display:grid;
+      gap:10px;
+    }
+
+    @media(min-width:600px){
+      .row{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    .actions{
+      display:grid;
+      gap:10px;
+      grid-template-columns:1fr 1fr 1fr;
+      margin-top:10px;
+    }
+
+    .btn{
+      cursor:pointer;
+      border:none;
+      color:#fff;
+      font-weight:600;
+    }
+
+    .save{background:var(--b)}
+    .clear{background:#9ca3af}
+    .sync{background:#111827}
+
+    .item{
+      display:grid;
+      gap:10px;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid var(--bd);
+      margin-bottom:10px;
+      background:#fafafa;
+    }
+
+    .item img{
+      width:56px;
+      height:56px;
+      object-fit:cover;
+      border-radius:10px;
+      border:1px solid var(--bd);
+    }
+
+    .tag{
+      font-size:12px;
+      background:#eef2ff;
+      color:#1e40af;
+      padding:2px 8px;
+      border-radius:999px;
+      margin-inline-start:6px;
+    }
+
+    .danger{
+      background:#ef4444;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+
+    .edit{
+      background:#f59e0b;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      padding:6px 10px;
+      cursor:pointer;
+      margin-left:6px;
+    }
   </style>
 </head>
+
 <body>
 <header>
-  <div class="split">
-    <h1>📦 مستودع البيت</h1>
-    <span class="pill" id="statusPill">جاهز</span>
-  </div>
+  <h1>📦 مستودع البيت</h1>
 </header>
 
-<main class="grid">
-  <!-- إضافة -->
-  <section class="card">
-    <div class="split">
-      <b>إضافة / تعديل غرض</b>
-      <span class="muted" id="editHint">وضع الإضافة</span>
-    </div>
-    <hr/>
+<main>
+  <div class="grid">
 
-    <div class="row">
-      <input id="name" placeholder="اسم الغرض (مثال: مفك كبير)"/>
-    </div>
+    <!-- إضافة / تعديل -->
+    <div class="card">
+      <h2>إضافة / تعديل غرض</h2>
 
-    <div class="row two">
-      <select id="category">
-        <option value="">التصنيف (اختياري)</option>
-        <option>أدوات</option>
-        <option>كهرباء</option>
-        <option>سباكة</option>
-        <option>تنظيف</option>
-        <option>مطبخ</option>
-        <option>حديقة</option>
-        <option>قطع غيار</option>
-        <option>أخرى</option>
-      </select>
+      <input type="hidden" id="editIndex" />
 
-      <select id="shelf">
-        <option value="">رقم الرف *</option>
-      </select>
-    </div>
+      <label>اسم الغرض</label>
+      <input id="name" placeholder="مثال: مفك كبير" />
 
-    <div class="row three">
-      <select id="side">
-        <option value="">الجهة</option>
-        <option>يمين</option>
-        <option>يسار</option>
-        <option>وسط</option>
-      </select>
-      <select id="level">
-        <option value="">المستوى</option>
-        <option>علوي</option>
-        <option>وسط</option>
-        <option>سفلي</option>
-      </select>
-      <input id="zone" placeholder="منطقة/قسم (اختياري)"/>
-    </div>
+      <label>التصنيف (اختياري)</label>
+      <input id="category" placeholder="أدوات / كهرباء / مطبخ" />
 
-    <div class="row">
-      <textarea id="notes" placeholder="ملاحظات (مثال: داخل صندوق أسود)"></textarea>
-    </div>
+      <div class="row">
+        <div>
+          <label>رقم الرف *</label>
+          <input id="shelf" />
+        </div>
+        <div>
+          <label>الجهة</label>
+          <input id="side" />
+        </div>
+      </div>
 
-    <div class="row">
-      <input type="file" id="img" accept="image/*" capture="environment"/>
-      <div class="muted">تقدر ترفع صورة أو تفتح الكاميرا مباشرة.</div>
+      <div class="row">
+        <div>
+          <label>المستوى</label>
+          <input id="level" />
+        </div>
+        <div>
+          <label>منطقة / قسم</label>
+          <input id="zone" />
+        </div>
+      </div>
+
+      <label>ملاحظات</label>
+      <textarea id="notes" rows="3"></textarea>
+
+      <label>صورة (اختياري)</label>
+      <input id="image" type="file" accept="image/*" />
+
+      <div class="actions">
+        <button class="btn sync" onclick="sync()">مزامنة (اختياري)</button>
+        <button class="btn clear" onclick="clearForm()">مسح الحقول</button>
+        <button class="btn save" onclick="save()">حفظ</button>
+      </div>
     </div>
 
-    <div class="actions">
-      <button onclick="saveItem()">حفظ</button>
-      <button class="light" onclick="resetForm()">مسح الحقول</button>
-      <button class="secondary" onclick="syncNow()">مزامنة (اختياري)</button>
+    <!-- العرض -->
+    <div class="card">
+      <h2>البحث والعرض</h2>
+      <input id="search" placeholder="ابحث بالاسم أو الرف" oninput="render()" />
+      <div id="list"></div>
     </div>
 
-    <div id="msgBox" style="margin-top:10px"></div>
-  </section>
-
-  <!-- بحث/عرض -->
-  <section class="card">
-    <div class="split">
-      <b>البحث والعرض</b>
-      <span class="muted">عدد الأغراض: <b id="count">0</b></span>
-    </div>
-    <hr/>
-
-    <div class="toolbar">
-      <input id="q" placeholder="ابحث بالاسم/الملاحظات/المنطقة…" oninput="render()"/>
-      <select id="filterShelf" onchange="render()">
-        <option value="">كل الرفوف</option>
-      </select>
-      <select id="filterCat" onchange="render()">
-        <option value="">كل التصنيفات</option>
-        <option>أدوات</option><option>كهرباء</option><option>سباكة</option><option>تنظيف</option>
-        <option>مطبخ</option><option>حديقة</option><option>قطع غيار</option><option>أخرى</option>
-      </select>
-    </div>
-
-    <div class="warn muted" style="margin-top:10px">
-      🔸 ملاحظة: هذه الصفحة تحفظ محليًا في نفس الجوال.  
-      إذا تبي كل العائلة تشوف نفس الأشياء، استخدم زر **مزامنة** (ويبقى يحتاج نت وقت المزامنة).
-    </div>
-
-    <hr/>
-    <div class="list" id="list"></div>
-  </section>
+  </div>
 </main>
 
 <script>
-/** 🔗 ضع رابط Apps Script هنا (موجود عندك) */
-const API = "https://script.google.com/macros/s/AKfycbzQTPEMSdGe9rcUsVBntVdj_oFG0vZmvHT_EcrZ2ghoS0i8G4NZiSqrB5Tsl3FC5KAd/exec";
+let items = JSON.parse(localStorage.getItem("warehouse_items") || "[]");
 
-/** إعداد رفوف: عدل العدد حسب مستودعك */
-const SHELVES_COUNT = 40; // مثال: 40 رف
+function save(){
+  const name = nameInput.value.trim();
+  if(!name) return alert("اسم الغرض مطلوب");
 
-let items = [];
-let editingId = null;
-
-const $ = (id)=>document.getElementById(id);
-
-function setPill(text, ok=true){
-  const p = $("statusPill");
-  p.textContent = text;
-  p.style.background = ok ? "#ecfdf5" : "#fff7ed";
-  p.style.borderColor = ok ? "#a7f3d0" : "#fed7aa";
-  p.style.color = ok ? "#065f46" : "#9a3412";
-}
-
-function msg(html, kind="ok"){
-  $("msgBox").innerHTML = `<div class="${kind}">${html}</div>`;
-  setTimeout(()=>{$("msgBox").innerHTML="";}, 4000);
-}
-
-function uid(){
-  return Math.random().toString(16).slice(2) + Date.now().toString(16);
-}
-
-function initShelves(){
-  const shelfSel = $("shelf");
-  const filterSel = $("filterShelf");
-  for(let i=1;i<=SHELVES_COUNT;i++){
-    const opt1 = document.createElement("option");
-    opt1.value = String(i);
-    opt1.textContent = `رف ${i}`;
-    shelfSel.appendChild(opt1);
-
-    const opt2 = document.createElement("option");
-    opt2.value = String(i);
-    opt2.textContent = `رف ${i}`;
-    filterSel.appendChild(opt2);
-  }
-}
-
-function loadLocal(){
-  try{
-    const raw = localStorage.getItem("warehouse_items_v2");
-    items = raw ? JSON.parse(raw) : [];
-  }catch(e){ items=[]; }
-}
-
-function saveLocal(){
-  localStorage.setItem("warehouse_items_v2", JSON.stringify(items));
-}
-
-function locText(it){
-  const parts = [];
-  if(it.shelf) parts.push(`رف ${it.shelf}`);
-  if(it.side) parts.push(it.side);
-  if(it.level) parts.push(it.level);
-  if(it.zone) parts.push(`(${it.zone})`);
-  return parts.join(" - ") || "بدون موقع";
-}
-
-async function fileToDataURL(file){
-  if(!file) return "";
-  return await new Promise((resolve,reject)=>{
-    const r = new FileReader();
-    r.onload = ()=>resolve(r.result);
-    r.onerror = reject;
-    r.readAsDataURL(file);
-  });
-}
-
-function resetForm(){
-  editingId = null;
-  $("editHint").textContent = "وضع الإضافة";
-  $("name").value="";
-  $("category").value="";
-  $("shelf").value="";
-  $("side").value="";
-  $("level").value="";
-  $("zone").value="";
-  $("notes").value="";
-  $("img").value="";
-  msg("تم مسح الحقول.", "ok");
-}
-
-function startEdit(id){
-  const it = items.find(x=>x.id===id);
-  if(!it) return;
-  editingId = id;
-  $("editHint").textContent = "وضع التعديل";
-  $("name").value = it.name||"";
-  $("category").value = it.category||"";
-  $("shelf").value = it.shelf||"";
-  $("side").value = it.side||"";
-  $("level").value = it.level||"";
-  $("zone").value = it.zone||"";
-  $("notes").value = it.notes||"";
-  msg("عدّل البيانات ثم اضغط حفظ.", "ok");
-  window.scrollTo({top:0, behavior:"smooth"});
-}
-
-function removeItem(id){
-  if(!confirm("تأكيد حذف هذا الغرض؟")) return;
-  items = items.filter(x=>x.id!==id);
-  saveLocal();
-  render();
-  msg("تم الحذف.", "ok");
-}
-
-async function saveItem(){
-  const name = $("name").value.trim();
-  const shelf = $("shelf").value.trim();
-  if(!name){ msg("اكتب اسم الغرض.", "warn"); return; }
-  if(!shelf){ msg("اختر رقم الرف.", "warn"); return; }
-
-  let imgData = "";
-  const f = $("img").files[0];
-  if(f){
-    imgData = await fileToDataURL(f);
-  }
-
-  const payload = {
-    id: editingId || uid(),
+  const obj = {
     name,
-    category: $("category").value.trim(),
-    shelf,
-    side: $("side").value.trim(),
-    level: $("level").value.trim(),
-    zone: $("zone").value.trim(),
-    notes: $("notes").value.trim(),
-    img: imgData || (editingId ? (items.find(x=>x.id===editingId)?.img||"") : ""),
-    updatedAt: Date.now()
+    category:category.value,
+    shelf:shelf.value,
+    side:side.value,
+    level:level.value,
+    zone:zone.value,
+    notes:notes.value,
+    date:new Date().toLocaleDateString("ar-SA"),
+    image:""
   };
 
-  const idx = items.findIndex(x=>x.id===payload.id);
-  if(idx>=0) items[idx]=payload;
-  else items.unshift(payload);
+  const idx = editIndex.value;
+  const file = image.files[0];
 
-  saveLocal();
+  if(file){
+    const reader = new FileReader();
+    reader.onload = e=>{
+      obj.image = e.target.result;
+      finalize(obj, idx);
+    };
+    reader.readAsDataURL(file);
+  }else{
+    finalize(obj, idx);
+  }
+}
+
+function finalize(obj, idx){
+  if(idx===""){
+    items.push(obj);
+  }else{
+    items[idx] = obj;
+  }
+  localStorage.setItem("warehouse_items", JSON.stringify(items));
+  clearForm();
   render();
-  resetForm();
-  msg("تم الحفظ محليًا ✅", "ok");
 }
 
 function render(){
-  const q = $("q").value.trim().toLowerCase();
-  const fs = $("filterShelf").value.trim();
-  const fc = $("filterCat").value.trim();
-
-  let filtered = items.slice();
-  if(fs) filtered = filtered.filter(x=>String(x.shelf)===String(fs));
-  if(fc) filtered = filtered.filter(x=>(x.category||"")===fc);
-  if(q){
-    filtered = filtered.filter(x=>{
-      const hay = `${x.name||""} ${x.notes||""} ${x.zone||""} ${x.side||""} ${x.level||""} ${x.category||""}`.toLowerCase();
-      return hay.includes(q);
-    });
-  }
-
-  $("count").textContent = String(filtered.length);
-  const box = $("list");
-  box.innerHTML = "";
-
-  if(filtered.length===0){
-    box.innerHTML = `<div class="muted">لا توجد أغراض مطابقة. جرّب بحث مختلف أو أضف غرض جديد.</div>`;
-    return;
-  }
-
-  for(const it of filtered){
-    const img = it.img ? `<img class="thumb" src="${it.img}" alt="صورة">` : `<div class="thumb"></div>`;
-    const tags = [
-      it.category ? `<span class="tag">${it.category}</span>` : "",
-      it.shelf ? `<span class="tag">رف ${it.shelf}</span>` : "",
-      it.side ? `<span class="tag">${it.side}</span>` : "",
-      it.level ? `<span class="tag">${it.level}</span>` : "",
-      it.zone ? `<span class="tag">${it.zone}</span>` : ""
-    ].join("");
-
-    box.innerHTML += `
-      <div class="item">
-        <div>${img}</div>
-        <div class="meta">
-          <b>${escapeHtml(it.name||"")}</b>
-          <div class="muted" style="margin-top:4px">📍 ${escapeHtml(locText(it))}</div>
-          ${it.notes ? `<div style="margin-top:6px">${escapeHtml(it.notes)}</div>` : ""}
-          <div class="tags">${tags}</div>
-          <div class="actions">
-            <button class="light" onclick="startEdit('${it.id}')">تعديل</button>
-            <button class="secondary" onclick="removeItem('${it.id}')">حذف</button>
-          </div>
+  const q = search.value.trim();
+  list.innerHTML = "";
+  items
+    .filter(i => !q || i.name.includes(q) || i.shelf.includes(q))
+    .forEach((i, idx)=>{
+      const div = document.createElement("div");
+      div.className="item";
+      div.innerHTML = `
+        ${i.image ? `<img src="${i.image}">` : `<img src="https://via.placeholder.com/56">`}
+        <div>
+          <strong>${i.name}</strong>
+          ${i.category ? `<span class="tag">${i.category}</span>`:""}
+          <div>رف ${i.shelf} - ${i.side} - ${i.level}</div>
         </div>
-      </div>
-    `;
-  }
-}
-
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
-}
-
-/** مزامنة (اختيارية) */
-async function syncNow(){
-  setPill("جاري المزامنة…", false);
-  try{
-    // 1) جلب من السيرفر (لو فيه بيانات أحدث)
-    const r = await fetch(API, {cache:"no-store"});
-    const remote = await r.json();
-    const remoteItems = Array.isArray(remote.items) ? remote.items : [];
-
-    // 2) دمج: الأحدث يفوز
-    const map = new Map();
-    for(const it of remoteItems) map.set(it.id, it);
-    for(const it of items){
-      const old = map.get(it.id);
-      if(!old || (it.updatedAt||0) > (old.updatedAt||0)) map.set(it.id, it);
-    }
-    items = Array.from(map.values()).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0));
-    saveLocal();
-    render();
-
-    // 3) دفع للـ API (يحفظ عندكم في Google)
-    await fetch(API,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({ items })
+        <div>
+          <button class="edit" onclick="edit(${idx})">تعديل</button>
+          <button class="danger" onclick="del(${idx})">حذف</button>
+        </div>
+      `;
+      list.appendChild(div);
     });
+}
 
-    setPill("تمت المزامنة ✅", true);
-    msg("تمت المزامنة بنجاح ✅", "ok");
-  }catch(e){
-    console.error(e);
-    setPill("فشل المزامنة", false);
-    msg("فشلت المزامنة. تأكد من رابط Apps Script أو الإنترنت.", "warn");
+function edit(i){
+  const o = items[i];
+  nameInput.value=o.name;
+  category.value=o.category;
+  shelf.value=o.shelf;
+  side.value=o.side;
+  level.value=o.level;
+  zone.value=o.zone;
+  notes.value=o.notes;
+  editIndex.value=i;
+}
+
+function del(i){
+  if(confirm("حذف الغرض؟")){
+    items.splice(i,1);
+    localStorage.setItem("warehouse_items", JSON.stringify(items));
+    render();
   }
 }
 
-(function boot(){
-  initShelves();
-  loadLocal();
-  render();
-  setPill("جاهز", true);
-})();
+function clearForm(){
+  document.querySelectorAll("input,textarea").forEach(i=>i.value="");
+  editIndex.value="";
+}
+
+function sync(){
+  localStorage.setItem("warehouse_items", JSON.stringify(items));
+  alert("تمت المزامنة");
+}
+
+render();
 </script>
+
 </body>
 </html>
